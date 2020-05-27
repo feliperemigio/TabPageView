@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "TabPageView"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "Use Pages with tab"
 
   # This description is used to generate tags and improve search results.
@@ -106,7 +106,11 @@ Pod::Spec.new do |s|
   # s.resources = "Resources/*.png"
 
   # s.preserve_paths = "FilesToSave", "MoreFilesToSave"
-
+  s.resource_bundles = {
+      'TabPageView' => [
+          'Source/**/*.xib'
+      ]
+    }
 
   # ――― Project Linking ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
