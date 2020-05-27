@@ -51,7 +51,10 @@ class TabPageViewController: UIViewController {
     private var currentIndex: Int = -1
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: Bundle(for: Self.self))
+        let podBundle = Bundle(for: Self.classForCoder())
+        let bundleURL = podBundle.url(forResource: "TabPageView", withExtension: "bundle")!
+        let bundle = Bundle(url: bundleURL)!
+        super.init(nibName: nibNameOrNil, bundle: bundle)
         self.setUp()
     }
     

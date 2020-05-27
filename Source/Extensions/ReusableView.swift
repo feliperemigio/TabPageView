@@ -26,7 +26,9 @@ extension NibLoadableView where Self: UIView {
 
 extension UICollectionView {
     func register<T: UICollectionViewCell>(_: T.Type) where T: ReusableView, T: NibLoadableView {
-        let bundle = Bundle(for: T.self)
+        let podBundle = Bundle(for: T.classForCoder())
+        let bundleURL = podBundle.url(forResource: "TabPageView", withExtension: "bundle")!
+        let bundle = Bundle(url: bundleURL)!
         let nib = UINib(nibName: T.nibName, bundle: bundle)
         register(nib, forCellWithReuseIdentifier: T.defaultReuseIdentifier)
     }
