@@ -3,6 +3,6 @@
 # Uncomment this line if you're using Swift
 
 
-target 'TabPageView' do
-    pod 'TabPageView', :path => '../'
+target 'Example' do
+    pod 'TabPageView', :path => './'
 end

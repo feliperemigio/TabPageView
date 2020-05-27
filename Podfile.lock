@@ -1,0 +1,16 @@
+PODS:
+  - TabPageView (1.0.0)
+
+DEPENDENCIES:
+  - TabPageView (from `./`)
+
+EXTERNAL SOURCES:
+  TabPageView:
+    :path: "./"
+
+SPEC CHECKSUMS:
+  TabPageView: 31daedc83d813290f1bb27dd78d4d4999efd2e8c
+
+PODFILE CHECKSUM: 8f5f0e8138b131fe3ea4bdb7b514f5da7e9551b7
+
+COCOAPODS: 1.9.1
