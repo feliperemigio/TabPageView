@@ -88,7 +88,7 @@ Pod::Spec.new do |s|
   #  For header files it will include any header in the folder.
   #  Not including the public_header_files will make all headers public.
   #
-  s.source_files = "Source/**/*.{swift, xib}"
+  s.source_files = "Source/**/*.{swift,xib}"
   s.swift_version = "4.2" 
 
   # s.public_header_files = "Classes/**/*.h"
