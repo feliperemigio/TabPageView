@@ -15,28 +15,36 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let viewController = UIViewController()
-        viewController.tabBarItem = UITabBarItem()
-        viewController.tabBarItem.title = "Teste"
-        viewController.tabBarItem.setTitleTextAttributes([
-            .font: UIFont.systemFont(ofSize: 30),
-            .strokeColor: UIColor.red
-        ], for: .normal)
-        viewController.tabBarItem.setTitleTextAttributes([
-            .font: UIFont.systemFont(ofSize: 40),
-            .strokeColor: UIColor.black
-        ], for: .selected)
-        viewController.view.backgroundColor = .gray
-        let viewController2 = UIViewController()
-        viewController2.tabBarItem = UITabBarItem()
-        viewController2.tabBarItem.title = "Teste 2"
-        viewController2.view.backgroundColor = .yellow
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 18),
+            .strokeColor: UIColor(red: 136/255, green: 136/255, blue: 136/255, alpha: 1)
+        ]
         
-        tabPageView.viewControllers = [viewController, viewController2]
-        tabPageView.appearance.distribution = .fill
-        tabPageView.appearance.backgroundColor = .white
-        tabPageView.appearance.indicatorColor = .orange
+        let selectedAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 18),
+            .strokeColor: UIColor.white
+        ]
+        
+        let firstView = UIViewController()
+        firstView.tabBarItem = UITabBarItem()
+        firstView.tabBarItem.title = "First"
+        firstView.tabBarItem.setTitleTextAttributes(attributes, for: .normal)
+        firstView.tabBarItem.setTitleTextAttributes(selectedAttributes, for: .selected)
+        firstView.view.backgroundColor = .gray
+        
+        let secondView = UIViewController()
+        secondView.tabBarItem = UITabBarItem()
+        secondView.tabBarItem.title = "Second"
+        secondView.tabBarItem.setTitleTextAttributes(attributes, for: .normal)
+        secondView.tabBarItem.setTitleTextAttributes(selectedAttributes, for: .selected)
+        secondView.view.backgroundColor = UIColor(red: 31/255, green: 31/255, blue: 31/255, alpha: 1)
+        
+        tabPageView.viewControllers = [firstView, secondView]
+        tabPageView.appearance.distribution = .proportional
+        tabPageView.appearance.backgroundColor = UIColor(red: 31/255, green: 31/255, blue: 31/255, alpha: 1)
+        tabPageView.appearance.indicatorColor = .white
         tabPageView.appearance.indicatorHeight = 2
+        tabPageView.appearance.tabHeight = 100
     }
 
 

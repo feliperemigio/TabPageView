@@ -122,7 +122,8 @@ class TabPageViewController: UIViewController {
     
     func applyAppearance(appearance: TabPageAppearance) {
         self.appearance = appearance
-        
+        self.tabCollectionView.removeConstraints(self.tabCollectionView.constraints.filter { $0.firstAttribute == .height } )
+        self.tabCollectionView.heightAnchor.constraint(equalToConstant: self.appearance?.tabHeight ?? 50).isActive = true
         self.tabCollectionView.backgroundColor = self.appearance?.backgroundColor
         self.tabCollectionView.reloadData()
     }
@@ -190,6 +191,12 @@ extension TabPageViewController: UICollectionViewDataSource {
         }
         
         return UICollectionViewCell()
+    }
+}
+
+extension TabPageViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: 50, height: collectionView.bounds.height)
     }
 }
 

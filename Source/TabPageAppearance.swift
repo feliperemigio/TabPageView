@@ -10,6 +10,12 @@ import UIKit
 
 public final class TabPageAppearance {
     
+    public var tabHeight: CGFloat = 50 {
+        didSet {
+            self.tabPageView.applyAppearance()
+        }
+    }
+    
     public var backgroundColor: UIColor = .blue {
         didSet {
             self.tabPageView.applyAppearance()
