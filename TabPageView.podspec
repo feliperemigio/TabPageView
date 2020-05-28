@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "TabPageView"
-  s.version      = "1.0.4"
+  s.version      = "1.0.5"
   s.summary      = "Use Pages with tab"
 
   # This description is used to generate tags and improve search results.
