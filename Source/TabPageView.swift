@@ -2,8 +2,8 @@
 //  TabPageView.swift
 //  HXP
 //
-//  Created by Felipe Remigio on 13/08/19.
-//  Copyright © 2019 Vega I.T. All rights reserved.
+//  Created by Felipe Remigio on 28/05/20.
+//  Copyright © 2020 Remigio All rights reserved.
 //
 
 import UIKit
@@ -14,62 +14,41 @@ public protocol TabPageProtocol {
 
 public class TabPageView: UIView, TabPageProtocol {
     
-    public var viewControllers: [UIViewController] = [] {
-        didSet { self.tabPageViewController?.pages = self.viewControllers }
-    }
-    
     private var tabPageViewController : TabPageViewController?
-    
-    @IBInspectable public var tabBackgroundColor: UIColor = .black {
-        didSet { self.tabPageViewController?.tabBackgroundColor = self.tabBackgroundColor }
-    }
-    
-    @IBInspectable public var tabTintColor: UIColor = .white {
-        didSet { self.tabPageViewController?.tabTintColor = self.tabTintColor }
-    }
-    
-    @IBInspectable public var tabTextColor: UIColor = .white {
-        didSet { self.tabPageViewController?.tabTextColor = self.tabTextColor }
-    }
-    
-    public var tabTextFont: UIFont = .systemFont(ofSize: 12) {
-        didSet { self.tabPageViewController?.tabTextFont = self.tabTextFont }
-    }
-    
-    public var tabSelectedTextFont: UIFont = .systemFont(ofSize: 12) {
-        didSet { self.tabPageViewController?.tabSelectedTextFont = self.tabSelectedTextFont }
-    }
-    
-    @IBInspectable public var tabIndicatorHeight: CGFloat = 2 {
-        didSet { self.tabPageViewController?.tabIndicatorHeight = self.tabIndicatorHeight }
-    }
-    
     weak var delegate: TabPageSlidingViewDelegate?
     
-    var tabContentStyle: TabContentStyle = .fill {
-        didSet {self.tabPageViewController?.tabContentStyle = self.tabContentStyle}
+    public var viewControllers: [UIViewController] = [] {
+        didSet {
+            self.tabPageViewController?.pages = self.viewControllers
+        }
     }
+    
+    public var appearance: TabPageAppearance!
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
         self.setUp()
+        self.appearance = TabPageAppearance(tabPageView: self)
     }
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.setUp()
+        self.appearance = TabPageAppearance(tabPageView: self)
     }
     
     private func setUp() {
-        self.tabPageViewController = TabPageRouter.createModule()
+        self.tabPageViewController = TabPageViewController()
         self.tabPageViewController?.delegate = self
         
-        guard let view = self.tabPageViewController?.view else {
-            return
-        }
+        guard let view = self.tabPageViewController?.view else { return }
         
         self.addSubview(view)
         view.constraintToBounds(view: self)
+    }
+    
+    func applyAppearance() {
+        self.tabPageViewController?.applyAppearance(appearance: self.appearance)
     }
 }
 
@@ -77,14 +56,20 @@ protocol TabPageSlidingViewDelegate: AnyObject {
     func tabPageSlidingView(didSelectTabAt index: Int)
 }
 
+
+// MARK: - TabPageViewControllerDelegate
+
 extension TabPageView: TabPageViewControllerDelegate {
     func tabPageViewController(didSelectTabAt index: Int) {
         self.delegate?.tabPageSlidingView(didSelectTabAt: index)
     }
 }
 
+
+// MARK: - Distribution
+
 extension TabPageView {
-    enum TabContentStyle {
+    public enum Distribution {
         case fill
         case proportional
     }
