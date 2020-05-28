@@ -26,7 +26,7 @@ pod 'TabPageView'
 import TabPageView
 ```
 
-2. Configure the CalendarView:
+2. Configure the TabPageView:
 
 ```swift 
 let firstView = UIViewController()
