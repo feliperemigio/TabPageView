@@ -15,7 +15,7 @@ public protocol TabPageProtocol {
 public class TabPageView: UIView, TabPageProtocol {
     
     private var tabPageViewController : TabPageViewController?
-    weak var delegate: TabPageSlidingViewDelegate?
+    public weak var delegate: TabPageViewDelegate?
     
     public var viewControllers: [UIViewController] = [] {
         didSet {
@@ -52,7 +52,7 @@ public class TabPageView: UIView, TabPageProtocol {
     }
 }
 
-protocol TabPageSlidingViewDelegate: AnyObject {
+public protocol TabPageViewDelegate: AnyObject {
     func tabPageSlidingView(didSelectTabAt index: Int)
 }
 

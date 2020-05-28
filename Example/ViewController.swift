@@ -45,8 +45,13 @@ class ViewController: UIViewController {
         tabPageView.appearance.indicatorColor = .white
         tabPageView.appearance.indicatorHeight = 2
         tabPageView.appearance.tabHeight = 100
+        tabPageView.delegate = self
     }
-
-
 }
 
+
+extension ViewController: TabPageViewDelegate {
+    func tabPageSlidingView(didSelectTabAt index: Int) {
+        
+    }
+}

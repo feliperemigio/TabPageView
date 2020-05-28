@@ -1,5 +1,5 @@
 PODS:
-  - TabPageView (1.0.3)
+  - TabPageView (1.0.4)
 
 DEPENDENCIES:
   - TabPageView (from `./`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  TabPageView: 87e32e3c7be8b6f4d0a8603ce965c04a51069c2b
+  TabPageView: 06cdf301ff6f8ddff4a111725de1d9e6bc93fe1a
 
 PODFILE CHECKSUM: 8f5f0e8138b131fe3ea4bdb7b514f5da7e9551b7
 
