@@ -13,7 +13,7 @@ class TabPageViewController: UIViewController {
     @IBOutlet weak var tabCollectionView: UICollectionView!
     weak var delegate: TabPageViewControllerDelegate?
     
-    private let pageViewController: UIPageViewController = {
+    public let pageViewController: UIPageViewController = {
         let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         pageViewController.view.backgroundColor = .clear
         return pageViewController

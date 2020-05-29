@@ -23,6 +23,14 @@ public class TabPageView: UIView, TabPageProtocol {
         }
     }
     
+    public var tabCollectionView: UICollectionView? {
+        self.tabPageViewController?.tabCollectionView
+    }
+    
+    public var pageViewController: UIPageViewController? {
+        self.tabPageViewController?.pageViewController
+    }
+    
     public var appearance: TabPageAppearance!
     
     public override init(frame: CGRect) {

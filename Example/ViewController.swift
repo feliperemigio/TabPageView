@@ -46,6 +46,8 @@ class ViewController: UIViewController {
         tabPageView.appearance.indicatorHeight = 2
         tabPageView.appearance.tabHeight = 100
         tabPageView.delegate = self
+        tabPageView.tabCollectionView?.contentInset = UIEdgeInsets(top: 0, left: 50, bottom: 0, right: 50)
+        (tabPageView.tabCollectionView?.collectionViewLayout as? UICollectionViewFlowLayout)?.minimumLineSpacing = 50
     }
 }
 
